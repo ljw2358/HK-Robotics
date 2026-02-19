@@ -1,215 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HK Robotics | Physical AI & Innovation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #007AFF;
-            --bg: #050505;
-            --text: #ffffff;
-            --text-dim: #888888;
-            --glass: rgba(255, 255, 255, 0.05);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HK ROBOTICS</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: var(--bg); 
-            color: var(--text); 
-            font-family: 'Inter', -apple-system, sans-serif;
-            overflow-x: hidden;
-            transition: direction 0.3s ease;
-        }
+<style>
+body {
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg,#0a0f2c,#111a4d,#1f2a80);
+    color:white;
+    text-align:center;
+}
 
-        /* 아랍어 대응 RTL 설정 */
-        body.rtl { direction: rtl; }
+header {
+    padding:40px 20px;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+h1 {
+    font-size:48px;
+    margin-bottom:10px;
+    letter-spacing:3px;
+}
 
-        /* 상단 네비게이션 및 언어 선택 */
-        nav {
-            height: 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--glass);
-        }
+h2 {
+    font-weight:normal;
+    opacity:0.8;
+}
 
-        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; }
+nav {
+    margin:30px 0;
+}
 
-        .lang-group { display: flex; gap: 10px; }
-        .lang-btn {
-            background: var(--glass);
-            border: 1px solid #333;
-            color: var(--text-dim);
-            padding: 6px 14px;
-            cursor: pointer;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            transition: all 0.3s;
-        }
-        .lang-btn.active {
-            border-color: var(--primary);
-            color: var(--text);
-            background: rgba(0, 122, 255, 0.1);
-        }
+button {
+    margin:5px;
+    padding:10px 20px;
+    border:none;
+    background:#00d4ff;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:5px;
+}
 
-        /* 메인 히어로 섹션 */
-        .hero {
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+button:hover {
+    background:white;
+}
 
-        #brandTitle {
-            font-size: clamp(3rem, 10vw, 6rem);
-            font-weight: 900;
-            margin-bottom: 20px;
-            background: linear-gradient(to bottom, #fff 30%, #666);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+section {
+    padding:40px 20px;
+    max-width:900px;
+    margin:auto;
+}
 
-        #brandTag {
-            font-size: 1.5rem;
-            color: var(--text-dim);
-            margin-bottom: 40px;
-            max-width: 700px;
-        }
-
-        /* 형님 코드의 핵심: pillStatus */
-        #pillStatus {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            background: rgba(0, 212, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 100px;
-            color: #00d4ff;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-        }
-
-        /* 푸터 영역 */
-        footer {
-            padding: 60px 0;
-            border-top: 1px solid var(--glass);
-            text-align: center;
-            color: var(--text-dim);
-        }
-
-        .footer-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            display: block;
-            margin-top: 10px;
-        }
-
-        /* 애니메이션 효과 */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero > * { animation: fadeIn 1s ease forwards; }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <nav>
-        <div class="logo">HK</div>
-        <div class="lang-group">
-            <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
-            <button class="lang-btn" onclick="setLang('ko')" id="btn-ko">KO</button>
-            <button class="lang-btn" onclick="setLang('zh')" id="btn-zh">ZH</button>
-            <button class="lang-btn" onclick="setLang('ar')" id="btn-ar">AR</button>
-        </div>
-    </nav>
-
-    <main class="hero">
-        <h1 id="brandTitle">HK Robotics</h1>
-        <p id="brandTag">Physical AI • Robotics for Industry & Society</p>
-        <div id="pillStatus">Status: Building • Recruiting • Partnering</div>
-    </main>
-</div>
-
-<footer>
-    <div class="container">
-        <p>© <span id="year"></span> HK Group. All rights reserved.</p>
-        <a href="mailto:info@hkrobotics.com" class="footer-link">info@hkrobotics.com</a>
-    </div>
-</footer>
+footer {
+    margin-top:60px;
+    padding:20px;
+    background:black;
+    font-size:14px;
+}
+</style>
 
 <script>
-    // 1. 엘리먼트 참조 (형님 코드 방식 유지)
-    const brandTitle = document.getElementById("brandTitle");
-    const brandTag = document.getElementById("brandTag");
-    const pill = document.getElementById("pillStatus");
-    const yearEl = document.getElementById("year");
-
-    // 2. 핵심 언어 변경 로직 (섬세한 텍스트 반영)
-    function setLang(lang) {
-        // 버튼 활성화 스타일 제어
-        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById('btn-' + lang).classList.add('active');
-
-        if (lang === "ko") {
-            brandTitle.textContent = "HK Robotics";
-            brandTag.textContent = "피지컬 AI • 산업과 사회를 위한 로봇 공학";
-            pill.textContent = "상태: 구축 중 • 인재 채용 • 파트너십 추진";
-            document.body.classList.remove("rtl");
-        } 
-        else if (lang === "ar") {
-            brandTitle.textContent = "HK Robotics";
-            brandTag.textContent = "Physical AI • روبوتات للصناعة والمجتمع";
-            pill.textContent = "الحالة: بناء • توظيف • شراكة";
-            document.body.classList.add("rtl");
-        } 
-        else if (lang === "zh") {
-            brandTitle.textContent = "HK Robotics";
-            brandTag.textContent = "Physical AI • 面向产业与社会的机器人";
-            pill.textContent = "状态: 建设中 • 招募中 • 合作中";
-            document.body.classList.remove("rtl");
-        } 
-        else {
-            // 기본 영어
-            brandTitle.textContent = "HK Robotics";
-            brandTag.textContent = "Physical AI • Robotics for Industry & Society";
-            pill.textContent = "Status: Building • Recruiting • Partnering";
-            document.body.classList.remove("rtl");
-        }
-
-        // 형님이 작성하신 localStorage 저장 로직 (선호도 유지)
-        try {
-            localStorage.setItem("hk_robotics_lang", lang);
-        } catch(e) { console.error("Storage error:", e); }
-    }
-
-    // 3. 초기화 (Init)
-    // 연도 자동 갱신
-    yearEl.textContent = new Date().getFullYear();
-
-    // 즉시 실행 함수로 이전 설정 불러오기
-    (function() {
-        let savedLang = "en";
-        try {
-            savedLang = localStorage.getItem("hk_robotics_lang") || "en";
-        } catch(e) { console.error(e); }
-        setLang(savedLang);
-    })();
+function changeLang(lang){
+    document.querySelectorAll(".lang").forEach(el=>el.style.display="none");
+    document.getElementById(lang).style.display="block";
+}
 </script>
+
+</head>
+
+<body onload="changeLang('en')">
+
+<header>
+<h1>HK ROBOTICS</h1>
+<h2>Advanced Robotics • AI Systems • Future Engineering</h2>
+</header>
+
+<nav>
+<button onclick="changeLang('en')">English</button>
+<button onclick="changeLang('kr')">한국어</button>
+<button onclick="changeLang('cn')">中文</button>
+<button onclick="changeLang('ar')">العربية</button>
+</nav>
+
+<!-- English -->
+<section id="en" class="lang">
+<h2>About HK ROBOTICS</h2>
+<p>
+HK ROBOTICS is a next-generation robotics and artificial intelligence company 
+focused on advanced automation, intelligent machines, industrial robotics, 
+defense robotics, and space engineering technologies.
+</p>
+
+<h2>Our Vision</h2>
+<p>
+We build intelligent robotic ecosystems that integrate AI, quantum computing,
+automation systems, and next-generation manufacturing.
+</p>
+
+<h2>Core Areas</h2>
+<p>
+• Industrial Robotics<br>
+• AI Autonomous Systems<br>
+• Humanoid Robotics<br>
+• Defense & Aerospace Robotics<br>
+• Quantum Integrated Robotics
+</p>
+
+<h2>Contact</h2>
+<p>
+Email: info@hkrobotics.com
+</p>
+</section>
+
+<!-- Korean -->
+<section id="kr" class="lang">
+<h2>HK ROBOTICS 소개</h2>
+<p>
+HK ROBOTICS는 첨단 로봇공학과 인공지능 기술을 기반으로 
+자동화 시스템, 산업용 로봇, 방산 로봇, 우주공학 기술을 연구하는 
+차세대 기술 기업입니다.
+</p>
+
+<h2>비전</h2>
+<p>
+AI, 양자기술, 자동화 제조 시스템을 통합한 
+지능형 로봇 생태계를 구축합니다.
+</p>
+
+<h2>핵심 분야</h2>
+<p>
+• 산업용 로봇<br>
+• 자율 인공지능 시스템<br>
+• 휴머노이드 로봇<br>
+• 방위·항공 로봇<br>
+• 양자 융합 로보틱스
+</p>
+
+<h2>문의</h2>
+<p>
+이메일: info@hkrobotics.com
+</p>
+</section>
+
+<!-- Chinese -->
+<section id="cn" class="lang">
+<h2>关于 HK ROBOTICS</h2>
+<p>
+HK ROBOTICS 是一家专注于先进机器人与人工智能系统的
+未来科技公司，涵盖工业自动化、国防机器人、
+航天工程及智能系统研发。
+</p>
+
+<h2>愿景</h2>
+<p>
+构建融合人工智能、量子技术与智能制造的
+下一代机器人生态系统。
+</p>
+
+<h2>核心领域</h2>
+<p>
+• 工业机器人<br>
+• 自主人工智能系统<br>
+• 仿人机器人<br>
+• 国防与航天机器人<br>
+• 量子融合机器人技术
+</p>
+
+<h2>联系</h2>
+<p>
+邮箱: info@hkrobotics.com
+</p>
+</section>
+
+<!-- Arabic -->
+<section id="ar" class="lang" dir="rtl">
+<h2>حول HK ROBOTICS</h2>
+<p>
+HK ROBOTICS هي شركة تكنولوجيا متقدمة متخصصة في
+أنظمة الروبوتات والذكاء الاصطناعي،
+والأتمتة الصناعية، وروبوتات الدفاع، وهندسة الفضاء.
+</p>
+
+<h2>الرؤية</h2>
+<p>
+بناء نظام بيئي ذكي للروبوتات يجمع بين
+الذكاء الاصطناعي وتقنيات الكم والتصنيع المتقدم.
+</p>
+
+<h2>المجالات الأساسية</h2>
+<p>
+• الروبوتات الصناعية<br>
+• أنظمة الذكاء الاصطناعي الذاتية<br>
+• الروبوتات الشبيهة بالبشر<br>
+• روبوتات الدفاع والفضاء<br>
+• تكامل تقنيات الكم والروبوتات
+</p>
+
+<h2>اتصل بنا</h2>
+<p>
+البريد الإلكتروني: info@hkrobotics.com
+</p>
+</section>
+
+<footer>
+© 2026 HK ROBOTICS. All Rights Reserved.
+</footer>
 
 </body>
 </html>
