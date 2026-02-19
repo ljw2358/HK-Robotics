@@ -3,98 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HK Robotics | Physical AI</title>
+    <title>HK Robotics | Physical AI & Innovation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-color: #0055ff; --bg-dark: #0a0a0a; }
-        body { margin: 0; background: var(--bg-dark); color: white; font-family: 'Inter', sans-serif; }
-        header { padding: 40px; text-align: center; }
-        .lang-selector { position: absolute; top: 20px; right: 20px; }
-        .lang-btn { background: transparent; color: #888; border: 1px solid #444; padding: 5px 12px; cursor: pointer; margin-left: 5px; border-radius: 4px; transition: 0.3s; }
-        .lang-btn:hover, .lang-btn.active { color: white; border-color: var(--primary-color); }
-        
-        .hero { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        #brandTitle { font-size: 4rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 10px; }
-        #brandTag { font-size: 1.5rem; color: #bbb; margin-bottom: 30px; }
-        
-        /* 사진 속 'pill' 스타일 */
-        #pillStatus { 
-            display: inline-block; padding: 8px 20px; border-radius: 50px; 
-            background: rgba(0, 85, 255, 0.15); border: 1px solid var(--primary-color);
-            font-size: 0.9rem; color: #00d4ff; font-weight: bold;
+        :root {
+            --primary: #007AFF;
+            --bg: #050505;
+            --text: #ffffff;
+            --text-dim: #888888;
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
-        .rtl { direction: rtl; font-family: 'Tahoma', sans-serif; }
-        footer { padding: 50px; border-top: 1px solid #222; font-size: 0.8rem; color: #666; text-align: center; }
-        a { color: var(--primary-color); text-decoration: none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'Inter', -apple-system, sans-serif;
+            overflow-x: hidden;
+            transition: direction 0.3s ease;
+        }
+
+        /* 아랍어 대응 RTL 설정 */
+        body.rtl { direction: rtl; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 상단 네비게이션 및 언어 선택 */
+        nav {
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass);
+        }
+
+        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; }
+
+        .lang-group { display: flex; gap: 10px; }
+        .lang-btn {
+            background: var(--glass);
+            border: 1px solid #333;
+            color: var(--text-dim);
+            padding: 6px 14px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        .lang-btn.active {
+            border-color: var(--primary);
+            color: var(--text);
+            background: rgba(0, 122, 255, 0.1);
+        }
+
+        /* 메인 히어로 섹션 */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #brandTitle {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff 30%, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #brandTag {
+            font-size: 1.5rem;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+
+        /* 형님 코드의 핵심: pillStatus */
+        #pillStatus {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 100px;
+            color: #00d4ff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* 푸터 영역 */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--glass);
+            text-align: center;
+            color: var(--text-dim);
+        }
+
+        .footer-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* 애니메이션 효과 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero > * { animation: fadeIn 1s ease forwards; }
     </style>
 </head>
 <body>
 
-<div class="lang-selector">
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('ko')">KO</button>
-    <button class="lang-btn" onclick="setLang('zh')">ZH</button>
-    <button class="lang-btn" onclick="setLang('ar')">AR</button>
+<div class="container">
+    <nav>
+        <div class="logo">HK</div>
+        <div class="lang-group">
+            <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+            <button class="lang-btn" onclick="setLang('ko')" id="btn-ko">KO</button>
+            <button class="lang-btn" onclick="setLang('zh')" id="btn-zh">ZH</button>
+            <button class="lang-btn" onclick="setLang('ar')" id="btn-ar">AR</button>
+        </div>
+    </nav>
+
+    <main class="hero">
+        <h1 id="brandTitle">HK Robotics</h1>
+        <p id="brandTag">Physical AI • Robotics for Industry & Society</p>
+        <div id="pillStatus">Status: Building • Recruiting • Partnering</div>
+    </main>
 </div>
 
-<section class="hero">
-    <h1 id="brandTitle">HK Robotics</h1>
-    <p id="brandTag">Physical AI • Robotics for Industry & Society</p>
-    <div id="pillStatus">Status: Building • Recruiting • Partnering</div>
-</section>
-
 <footer>
-    <p>© <span id="year"></span> HK Group. All rights reserved.</p>
-    <p>Inquiries: <a href="mailto:info@hkrobotics.com">info@hkrobotics.com</a></p>
+    <div class="container">
+        <p>© <span id="year"></span> HK Group. All rights reserved.</p>
+        <a href="mailto:info@hkrobotics.com" class="footer-link">info@hkrobotics.com</a>
+    </div>
 </footer>
 
 <script>
+    // 1. 엘리먼트 참조 (형님 코드 방식 유지)
     const brandTitle = document.getElementById("brandTitle");
     const brandTag = document.getElementById("brandTag");
     const pill = document.getElementById("pillStatus");
+    const yearEl = document.getElementById("year");
 
+    // 2. 핵심 언어 변경 로직 (섬세한 텍스트 반영)
     function setLang(lang) {
-        // 모든 버튼 비활성화 후 선택된 것만 활성화
-        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        
+        // 버튼 활성화 스타일 제어
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('btn-' + lang).classList.add('active');
+
         if (lang === "ko") {
             brandTitle.textContent = "HK Robotics";
-            brandTag.textContent = "피지컬 AI • 산업을 바꾸는 로봇";
-            pill.textContent = "상태: 구축 • 채용 • 파트너십";
+            brandTag.textContent = "피지컬 AI • 산업과 사회를 위한 로봇 공학";
+            pill.textContent = "상태: 구축 중 • 인재 채용 • 파트너십 추진";
             document.body.classList.remove("rtl");
-        } else if (lang === "ar") {
+        } 
+        else if (lang === "ar") {
             brandTitle.textContent = "HK Robotics";
             brandTag.textContent = "Physical AI • روبوتات للصناعة والمجتمع";
             pill.textContent = "الحالة: بناء • توظيف • شراكة";
             document.body.classList.add("rtl");
-        } else if (lang === "zh") {
+        } 
+        else if (lang === "zh") {
             brandTitle.textContent = "HK Robotics";
             brandTag.textContent = "Physical AI • 面向产业与社会的机器人";
             pill.textContent = "状态: 建设中 • 招募中 • 合作中";
             document.body.classList.remove("rtl");
-        } else {
-            // 기본 영어 (Default)
+        } 
+        else {
+            // 기본 영어
             brandTitle.textContent = "HK Robotics";
             brandTag.textContent = "Physical AI • Robotics for Industry & Society";
             pill.textContent = "Status: Building • Recruiting • Partnering";
             document.body.classList.remove("rtl");
         }
 
-        // 형님이 사진에서 쓰신 localStorage 로직 그대로 적용
+        // 형님이 작성하신 localStorage 저장 로직 (선호도 유지)
         try {
             localStorage.setItem("hk_robotics_lang", lang);
-        } catch(e) { console.error(e); }
+        } catch(e) { console.error("Storage error:", e); }
     }
 
-    // 초기화 로직 (Init)
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // 3. 초기화 (Init)
+    // 연도 자동 갱신
+    yearEl.textContent = new Date().getFullYear();
 
+    // 즉시 실행 함수로 이전 설정 불러오기
     (function() {
-        let saved = "en";
+        let savedLang = "en";
         try {
-            saved = localStorage.getItem("hk_robotics_lang") || "en";
+            savedLang = localStorage.getItem("hk_robotics_lang") || "en";
         } catch(e) { console.error(e); }
-        setLang(saved);
+        setLang(savedLang);
     })();
 </script>
 
