@@ -3,195 +3,200 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HK-ROBOTICS | Global Robotics Leader</title>
+<title>HK-Robotics | Autonomous Defense & Space Systems</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
 body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#0b0f1f;
-    color:white;
-    line-height:1.8;
+    font-family:'Orbitron',sans-serif;
+    background:#05070d;
+    color:#e6f1ff;
+    overflow-x:hidden;
 }
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:80px 30px;
+
+/* Animated starfield background */
+body::before{
+    content:"";
+    position:fixed;
+    width:200%;
+    height:200%;
+    background:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#00f7ff 1px, transparent 1px);
+    background-size:50px 50px,100px 100px;
+    animation:moveStars 60s linear infinite;
+    opacity:0.08;
 }
+
+@keyframes moveStars{
+    from{transform:translate(0,0);}
+    to{transform:translate(-500px,-500px);}
+}
+
+header{
+    text-align:center;
+    padding:80px 20px 30px 20px;
+}
+
 h1{
-    font-size:48px;
-    margin-bottom:10px;
-    color:#00eaff;
+    font-size:60px;
+    letter-spacing:4px;
+    background:linear-gradient(90deg,#00f7ff,#0077ff);
+    -webkit-background-clip:text;
+    color:transparent;
 }
+
 h2{
-    color:#9f4dff;
-    margin-top:50px;
+    margin-top:10px;
+    font-weight:400;
+    color:#8899aa;
+    letter-spacing:2px;
 }
+
 .language-buttons{
-    text-align:right;
-    margin-bottom:40px;
+    text-align:center;
+    margin:40px 0;
 }
-.language-buttons button{
-    background:#111;
-    color:white;
-    border:1px solid #00eaff;
-    padding:8px 15px;
-    margin-left:10px;
+
+button{
+    background:transparent;
+    border:1px solid #00f7ff;
+    color:#00f7ff;
+    padding:12px 25px;
+    margin:6px;
     cursor:pointer;
     transition:0.3s;
+    letter-spacing:1px;
 }
-.language-buttons button:hover{
-    background:#00eaff;
+
+button:hover{
+    background:#00f7ff;
     color:#000;
+    box-shadow:0 0 20px #00f7ff;
 }
-.section{
-    display:none;
+
+.content{
+    max-width:1100px;
+    margin:0 auto 100px auto;
+    padding:50px;
+    background:rgba(0,20,40,0.6);
+    border:1px solid rgba(0,247,255,0.2);
+    backdrop-filter:blur(15px);
+    animation:fadeIn 1.2s ease-in-out;
 }
-.section.active{
-    display:block;
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
 }
+
+p{
+    line-height:1.8;
+    margin-bottom:18px;
+    font-size:18px;
+    letter-spacing:1px;
+}
+
 footer{
-    margin-top:80px;
-    border-top:1px solid #222;
-    padding-top:30px;
-    color:#888;
-}
-.highlight{
-    color:#00eaff;
-    font-weight:bold;
+    text-align:center;
+    padding:30px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    color:#667788;
 }
 </style>
 
 <script>
-function showLang(lang){
-    var sections = document.querySelectorAll('.section');
-    sections.forEach(function(sec){
-        sec.classList.remove('active');
+function switchLanguage(lang){
+    document.querySelectorAll('.lang').forEach(el=>{
+        el.style.display='none';
     });
-    document.getElementById(lang).classList.add('active');
+    document.getElementById(lang).style.display='block';
 }
-window.onload = function(){
-    showLang('en');
-}
+
+/* Auto browser language detection */
+window.onload=function(){
+    const userLang=navigator.language || navigator.userLanguage;
+
+    if(userLang.startsWith('ko')) switchLanguage('ko');
+    else if(userLang.startsWith('zh')) switchLanguage('zh');
+    else if(userLang.startsWith('ar')) switchLanguage('ar');
+    else switchLanguage('en');
+};
 </script>
 
 </head>
 <body>
 
-<div class="container">
+<header>
+<h1>HK-Robotics</h1>
+<h2>Autonomous Defense • Space Systems • Global Infrastructure</h2>
+</header>
 
 <div class="language-buttons">
-<button onclick="showLang('en')">English</button>
-<button onclick="showLang('ko')">한국어</button>
-<button onclick="showLang('zh')">中文</button>
-<button onclick="showLang('ar')">العربية</button>
+<button onclick="switchLanguage('en')">EN</button>
+<button onclick="switchLanguage('ko')">KR</button>
+<button onclick="switchLanguage('zh')">CN</button>
+<button onclick="switchLanguage('ar')">AR</button>
 </div>
 
-<!-- ENGLISH -->
-<div id="en" class="section">
-<h1>HK-ROBOTICS</h1>
-<p class="highlight">Engineering Intelligence. Powering Autonomy. Building the Future.</p>
+<div class="content">
 
-<h2>Who We Are</h2>
-<p>
-HK-ROBOTICS is a global robotics and artificial intelligence company developing advanced autonomous systems for industry, defense, healthcare, and space exploration.
-</p>
+<div id="en" class="lang">
+<p>HK-Robotics is a defense-grade robotics and artificial intelligence corporation engineering autonomous systems for national security, aerospace, industrial dominance, and next-generation infrastructure.</p>
 
-<h2>Core Divisions</h2>
-<p>
-AI Robotics • Humanoid Systems • Industrial Automation • Defense Robotics • Medical Robotics • Space Robotics
-</p>
+<p>We develop high-precision unmanned systems, AI battlefield platforms, orbital robotics, medical automation units, and quantum-ready control architectures.</p>
 
-<h2>Vision 2035</h2>
-<p>
-Deploy intelligent robotic infrastructure across smart cities, advanced industries, medical institutions, and orbital missions worldwide.
-</p>
+<p>Our mission is to establish sovereign robotic ecosystems capable of operating independently across land, sea, air, cyber, and space domains.</p>
+
+<p>Vision 2035: Lead the global autonomous defense and space robotics market with scalable AI infrastructure deployed across strategic smart cities worldwide.</p>
+
+<p>Contact: info@hkrobotics</p>
+</div>
+
+<div id="ko" class="lang" style="display:none;">
+<p>HK-Robotics는 국방 등급 로보틱스 및 인공지능 기업으로, 국가 안보, 항공우주, 산업 인프라, 차세대 스마트 시스템을 위한 자율 시스템을 개발합니다.</p>
+
+<p>고정밀 무인 시스템, AI 전장 플랫폼, 궤도 우주 로봇, 의료 자동화 시스템, 차세대 제어 아키텍처를 설계합니다.</p>
+
+<p>육·해·공·사이버·우주 영역 전반에서 독립적으로 작동하는 주권형 로봇 생태계를 구축하는 것이 우리의 사명입니다.</p>
+
+<p>Vision 2035: 전략적 스마트 시티와 글로벌 인프라 전반에 확장 가능한 AI 자율 시스템을 배치하여 세계 방산·우주 로봇 시장을 선도합니다.</p>
+
+<p>문의: info@hkrobotics</p>
+</div>
+
+<div id="zh" class="lang" style="display:none;">
+<p>HK-Robotics 是一家国防级机器人与人工智能企业，致力于为国家安全、航空航天、工业基础设施及下一代智能系统构建自主平台。</p>
+
+<p>我们开发高精度无人系统、AI 战场平台、轨道空间机器人、医疗自动化设备以及先进控制架构。</p>
+
+<p>我们的使命是在陆、海、空、网络与太空领域建立可独立运行的主权机器人生态系统。</p>
+
+<p>愿景 2035：通过可扩展的人工智能基础设施，引领全球防务与航天机器人市场。</p>
+
+<p>联系邮箱: info@hkrobotics</p>
+</div>
+
+<div id="ar" class="lang" style="display:none; direction:rtl;">
+<p>HK-Robotics هي شركة روبوتات وذكاء اصطناعي من الدرجة الدفاعية، تقوم بتطوير أنظمة ذاتية للأمن الوطني والفضاء والبنية التحتية الصناعية المتقدمة.</p>
+
+<p>نقوم بتصميم أنظمة غير مأهولة عالية الدقة، منصات ذكاء اصطناعي عسكرية، روبوتات مدارية فضائية، وأنظمة أتمتة طبية متقدمة.</p>
+
+<p>مهمتنا إنشاء منظومات روبوتية سيادية تعمل بشكل مستقل عبر البر والبحر والجو والفضاء والفضاء السيبراني.</p>
+
+<p>رؤية 2035: قيادة سوق الروبوتات الدفاعية والفضائية عالميًا عبر بنية تحتية ذكية قابلة للتوسع.</p>
+
+<p>البريد الإلكتروني: info@hkrobotics</p>
+</div>
+
+</div>
 
 <footer>
-Contact: info@hkrobotics<br>
-© 2026 HK-ROBOTICS. All Rights Reserved.
+© 2026 HK-Robotics | Defense-Grade Autonomous Systems Corporation
 </footer>
-</div>
-
-<!-- KOREAN -->
-<div id="ko" class="section">
-<h1>HK-ROBOTICS</h1>
-<p class="highlight">지능을 설계하고, 자율을 구현하며, 미래를 구축합니다.</p>
-
-<h2>회사 소개</h2>
-<p>
-HK-ROBOTICS는 산업, 국방, 의료, 우주 탐사를 위한 첨단 자율 시스템을 개발하는 글로벌 로봇·AI 기업입니다.
-</p>
-
-<h2>핵심 분야</h2>
-<p>
-AI 로보틱스 • 휴머노이드 • 산업 자동화 • 국방 로봇 • 의료 로봇 • 우주 로봇
-</p>
-
-<h2>비전 2035</h2>
-<p>
-전 세계 스마트 도시, 첨단 산업, 의료 기관, 우주 미션에 지능형 로봇 인프라를 구축합니다.
-</p>
-
-<footer>
-문의: info@hkrobotics<br>
-© 2026 HK-ROBOTICS. All Rights Reserved.
-</footer>
-</div>
-
-<!-- CHINESE -->
-<div id="zh" class="section">
-<h1>HK-ROBOTICS</h1>
-<p class="highlight">构建智能，驱动自主，引领未来。</p>
-
-<h2>公司简介</h2>
-<p>
-HK-ROBOTICS 是一家开发先进自主系统的全球机器人与人工智能企业，服务于工业、国防、医疗和太空探索领域。
-</p>
-
-<h2>核心领域</h2>
-<p>
-人工智能机器人 • 人形机器人 • 工业自动化 • 国防机器人 • 医疗机器人 • 太空机器人
-</p>
-
-<h2>2035愿景</h2>
-<p>
-在全球智慧城市、先进工业、医疗机构和太空任务中部署智能机器人基础设施。
-</p>
-
-<footer>
-联系邮箱: info@hkrobotics<br>
-© 2026 HK-ROBOTICS. All Rights Reserved.
-</footer>
-</div>
-
-<!-- ARABIC -->
-<div id="ar" class="section" dir="rtl">
-<h1>HK-ROBOTICS</h1>
-<p class="highlight">هندسة الذكاء. تمكين الاستقلالية. بناء المستقبل.</p>
-
-<h2>من نحن</h2>
-<p>
-HK-ROBOTICS شركة عالمية في مجال الروبوتات والذكاء الاصطناعي تطور أنظمة ذاتية متقدمة للصناعة والدفاع والرعاية الصحية واستكشاف الفضاء.
-</p>
-
-<h2>مجالاتنا الأساسية</h2>
-<p>
-روبوتات الذكاء الاصطناعي • روبوتات بشرية الشكل • الأتمتة الصناعية • روبوتات الدفاع • الروبوتات الطبية • روبوتات الفضاء
-</p>
-
-<h2>رؤية 2035</h2>
-<p>
-نشر بنية تحتية روبوتية ذكية في المدن الذكية والصناعات المتقدمة والمؤسسات الطبية ومهام الفضاء عالميًا.
-</p>
-
-<footer>
-البريد الإلكتروني: info@hkrobotics<br>
-© 2026 HK-ROBOTICS. All Rights Reserved.
-</footer>
-</div>
-
-</div>
 
 </body>
 </html>
